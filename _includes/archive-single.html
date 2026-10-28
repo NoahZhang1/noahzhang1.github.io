@@ -37,7 +37,9 @@
     </h2>
     
     {% if post.collection == 'projects' or post.collection == 'publications' %}
-      <img src="{{ post.teaser }}" alt="{{ post.title }}" align="left" style="padding: 10px; width: 30%;">
+      {% if post.teaser %}
+        <img src="{{ post.teaser }}" alt="{{ post.title }}" align="left" style="padding: 10px; width: 30%;">
+      {% endif %}
     {% endif %}
     
     {% if post.read_time %}
@@ -50,7 +52,7 @@
       <p>{{ post.authors }}</p>
       <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
       <details>
-        <summary>Abstract</summary>
+        <summary>Summary</summary>
         <p>{{ post.abstract }}</p>
       </details>
     {% elsif post.date %}
